@@ -1,6 +1,6 @@
 id: fateid
-docker_repository: dynverse/dynmethods:fateid
-container_url: https://github.com/dynverse/dynmethods/tree/master/containers/fateid
+docker_repository: dynverse/ti_fateid
+container_url: https://github.com/dynverse/ti_fateid
 name: FateID
 type: algorithm
 platform: R
