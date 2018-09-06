@@ -1,5 +1,6 @@
 id: fateid
 docker_repository: dynverse/ti_fateid
+singularity_collection: 1547
 container_url: https://github.com/dynverse/ti_fateid
 name: FateID
 type: algorithm
