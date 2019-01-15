@@ -8,7 +8,7 @@ Bootstrap: shub
 From: dynverse/dynwrap:bioc
 
 %labels
-    version 0.1.5
+    version 0.1.5.1
 
 %files
     . /code
@@ -16,7 +16,7 @@ From: dynverse/dynwrap:bioc
 %post
     chmod -R 755 '/code'
     R -e 'devtools::install_cran("destiny")'
-    apt-get install -y libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
+    apt-get update && apt-get install -y libcgal-dev libglu1-mesa-dev libglu1-mesa-dev
     R -e 'devtools::install_cran("FateID")'
 
 %runscript
