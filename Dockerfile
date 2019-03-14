@@ -6,6 +6,6 @@ RUN apt-get update && apt-get install -y libcgal-dev libglu1-mesa-dev libglu1-me
 
 RUN R -e 'devtools::install_cran("FateID")'
 
-COPY definition.yml run.R example.R /code/
+COPY definition.yml run.R example.sh /code/
 
 ENTRYPOINT ["/code/run.R"]
