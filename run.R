@@ -14,7 +14,7 @@ library(FateID, warn.conflicts = FALSE)
 ###           LOAD DATA           ###
 #####################################
 expression <- task$expression
-params <- task$params
+parameters <- task$parameters
 priors <- task$priors
 
 end_id <- priors$end_id
@@ -40,7 +40,7 @@ start_group <- grouping[start_id %>% sample(1)] %>% unique()
 if (length(end_groups) < 2) {
   msg <- paste0("FateID requires at least two end cell populations, but according to the prior information there are only ", length(end_groups), " end populations!")
 
-  if (!identical(params$force, TRUE)) {
+  if (!identical(parameters$force, TRUE)) {
     stop(msg)
   }
 
@@ -61,14 +61,14 @@ y <- grouping
 tar <- end_groups
 
 # reclassify
-if (params$reclassify) {
+if (parameters$reclassify) {
   rc <- reclassify(
     x,
     y,
     tar,
-    clthr = params$clthr,
-    nbfactor = params$nbfactor,
-    q = params$q
+    clthr = parameters$clthr,
+    nbfactor = parameters$nbfactor,
+    q = parameters$q
   )
   y  <- rc$part
   x  <- rc$xf
@@ -80,17 +80,17 @@ fb <- fateBias(
   y,
   tar,
   z = NULL,
-  minnr = params$minnr,
-  minnrh = params$minnrh,
-  nbfactor = params$nbfactor
+  minnr = parameters$minnr,
+  minnrh = parameters$minnrh,
+  nbfactor = parameters$nbfactor
 )
 
 # dimensionality reduction
 dr  <- compdr(
   x,
   z = NULL,
-  m = params$m,
-  k = params$k
+  m = parameters$m,
+  k = parameters$k
 )
 
 # principal curves
@@ -98,9 +98,9 @@ pr <- prcurve(
   y,
   fb,
   dr,
-  k = params$k,
-  m = params$m,
-  trthr = params$trthr,
+  k = parameters$k,
+  m = parameters$m,
+  trthr = parameters$trthr,
   start = start_group
 )
 
